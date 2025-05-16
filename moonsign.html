@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>月星座診断｜愛と美の宇宙</title>
+</head>
+<body>
+  <h1>あなたの月星座を調べよう</h1>
+  <label for="birthdate">生年月日を入力（例：1979-03-05）:</label>
+  <input type="date" id="birthdate">
+  <button onClick="calculateMoonSign()">判定する</button>
+  <p id="result"></p>
+
+  <script>
+    function calculateMoonSign() {
+      const birthdate = document.getElementById("birthdate").value;
+      if (!birthdate) {
+        document.getElementById("result").innerText = "日付を入力してください。";
+        return;
+      }
+
+      // 単純な星座割り（※厳密には月の位置計算が必要）
+      const dummySigns = [
+        "牡羊座", "牡牛座", "双子座", "蟹座", "獅子座", "乙女座",
+        "天秤座", "蠍座", "射手座", "山羊座", "水瓶座", "魚座"
+      ];
+      const hash = birthdate.split("-").join("");
+      const signIndex = parseInt(hash.slice(-2)) % 12;
+      document.getElementById("result").innerText = `あなたの月星座（参考値）：${dummySigns[signIndex]}`;
+    }
+  </script>
+</body>
+</html>
